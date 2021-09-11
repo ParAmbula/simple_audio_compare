@@ -9,15 +9,22 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     lst<<"Name"<<"Size";
     this->ui->TreeResult->setHeaderLabels(lst);
+    this->ui->TreeResult->setFixedWidth(400);
+    this->ui->TreeResult->setSortingEnabled(true);
+    this->ui->TreeResult->setColumnWidth(0,200);
     lst.clear();
     lst<<"Name"<<"Match"<<"Path";
     this->ui->CompareResult->setHeaderLabels(lst);
-    this->ui->TreeResult->setSortingEnabled(true);
+    this->ui->CompareResult->setColumnWidth(0,200);
+    this->ui->CompareResult->setColumnWidth(1,80);
     this->ui->ProgressBar->hide();
     tmpsearch=nullptr;
     tmpcompare=nullptr;
     worktime=new QTimer(this);
     AudioMask<<"*.aac"<<"*.flac"<<"*.m4a"<<"*.mp3"<<"*.ogg"<<"*.wav"<<"*.wma"<<"*.mp4";
+    PlayerBottom=new SoundPlayer(this);
+    this->ui->PlayerLayout->addWidget(PlayerBottom);
+//    menucontext=new ContextMenu(this);
 }
 
 MainWindow::~MainWindow()
@@ -33,6 +40,11 @@ void MainWindow::ConnectAll()
     connect(this->ui->CompareButton,SIGNAL(clicked()),SLOT(slotCompare()));
     connect(this->ui->StopButton,SIGNAL(clicked()),SLOT(slotAbort()));
     connect(this->worktime,SIGNAL(timeout()),this,SLOT(slotTimeUpdate()));
+    connect(this,SIGNAL(SendAudio(QString)),PlayerBottom,SLOT(slotGetAudio(QString)));
+    connect(this->ui->CompareResult,SIGNAL(itemClicked()),this,SLOT(on_CompareResult_itemClicked()));
+    connect(this->ui->CompareResult,SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(slotConMenu(const QPoint &)));
+//    connect(this->ui->CompareResult,SIGNAL(itemClicked()),this,SLOT(slotConMenu()));
+//    connect(this->ui->CompareResult,SIGNAL(itemDoubleClicked()),this,SLOT(slotConMenu()));
 }
 
 void MainWindow::DeleteFiles()
@@ -40,55 +52,18 @@ void MainWindow::DeleteFiles()
     QTreeWidgetItemIterator it(this->ui->CompareResult);
     while(*it)
     {
-        if((*it)->childCount()>=1)
-        {
-            QTreeWidgetItemIterator init(it);
-            ++init;
-            int i=(*it)->childCount();
-            while(i!=0)
-            {
-                if((*init)->checkState(0)==Qt::Checked)
-                {
-                    QFile filetodelete((*init)->text(2));
-                    filetodelete.remove();
-                    if(!filetodelete.exists())
-                        qDebug()<<(*init)->text(2)+" WAS DELETED!";
-                }
-                ++init;
-                --i;
-            }
-        }
-        else if((*it)->checkState(0)==Qt::Checked)
+        if((*it)->checkState(0)==Qt::Checked)
         {
             QFile filetodelete((*it)->text(2));
             filetodelete.remove();
             if(!filetodelete.exists())
-                qDebug()<<(*it)->text(2)+" WAS DELETED!";
+            {
+                QString newname=(*it)->text(0);
+                (*it)->setText(0,"DELETED "+newname);
+            }
         }
         ++it;
     }
-
-//    foreach(QTreeWidgetItem* topitem, this->ui->CompareResult)
-//    {
-//        if(topitem->childCount()>=1)
-//        {
-//            foreach(QTreeWidgetItem* item, topitem)
-//            {
-//                if(item->checkState(0)==Qt::Checked)
-//                {
-//                    QFile filetodelete(item->text(2));
-//                    filetodelete.remove();
-//                    qDebug()<<item->text(2)+" WAS DELETED!";
-//                }
-//            }
-//        }
-//        if(topitem->checkState(0)==Qt::Checked)
-//        {
-//            QFile topfiletodelete(topitem->text(2));
-//            topfiletodelete.remove();
-//            qDebug()<<topitem->text(2)+" WAS DELETED!";
-//        }
-//    }
 }
 
 void MainWindow::slotBrowse()
@@ -106,7 +81,7 @@ void MainWindow::slotFind()
         return;
     FileCount=0;
     this->ui->Files->setText(QString("Counting"));
-    ResultList.clear();
+    ResultList.clear();// проверить очистку по списку
     ui->TreeResult->clear();
     this->ui->ProgressBar->show();
     ui->statusbar->showMessage("Work in progress.");
@@ -129,8 +104,8 @@ void MainWindow::slotFind()
     for(auto& lswd:ResultList )
     {
         ptwi=new QTreeWidgetItem(this->ui->TreeResult);
-        ptwi->setText(0,lswd.AudioName);
-        ptwi->setText(1,lswd.AudioSize);
+        ptwi->setText(0,lswd->AudioName);
+        ptwi->setText(1,lswd->AudioSize);
     }
     qDebug()<<"Stop find";
 }
@@ -170,30 +145,33 @@ void MainWindow::slotCompare()
     this->ui->CompareResult->clear();
     for(auto& audfile:ResultList)
     {
-        if(!audfile.TreeAdded)
+        if(!audfile->TreeAdded)
         {
-            audfile.TreeAdded=true;
+            audfile->TreeAdded=true;
             ptwi=new QTreeWidgetItem(this->ui->CompareResult);
             ptwi->setFlags(ptwi->flags()|Qt::ItemIsUserCheckable);
             ptwi->setCheckState(0,Qt::Unchecked);
-            ptwi->setText(0,audfile.AudioName);
-            for(auto&files:audfile.CompareResult.keys())
+            ptwi->setText(0,audfile->AudioName);
+            ptwi->setText(1,QString(tr("Sample")));
+            ptwi->setText(2,audfile->AudioPath);
+            for(auto&files:audfile->CompareResult.keys())
             {
                 if(!files->TreeAdded)
                 {
-                files->TreeAdded=true;
-                QTreeWidgetItem* childitem=new QTreeWidgetItem(ptwi);
-                childitem->setFlags(childitem->flags()|Qt::ItemIsUserCheckable);
-                childitem->setCheckState(0,Qt::Unchecked);
-                childitem->setText(0,files->AudioName);
-                childitem->setText(1,QString::number(audfile.CompareResult.value(files))+" %");
-                childitem->setText(2,files->AudioPath);
+                    files->TreeAdded=true;
+                    QTreeWidgetItem* childitem=new QTreeWidgetItem(ptwi);
+                    childitem->setFlags(childitem->flags()|Qt::ItemIsUserCheckable);
+                    childitem->setCheckState(0,Qt::Unchecked);
+                    childitem->setText(0,files->AudioName);
+                    childitem->setText(1,QString::number(audfile->CompareResult.value(files))+" %");
+                    childitem->setText(2,files->AudioPath);
                 }
             }
         }
     }
     this->ui->CompareResult->dumpObjectTree();
     qDebug()<<"Stop compare";
+    this->ui->CompareResult->setContextMenuPolicy(Qt::CustomContextMenu);
 }
 
 void MainWindow::slotDeleteselected()
@@ -221,3 +199,24 @@ void MainWindow::slotExit()
         delete tmpcompare;
     this->close();
 }
+
+void MainWindow::slotConMenu(const QPoint&pos)
+{
+    QTreeWidgetItem *item = this->ui->CompareResult->itemAt(pos);
+    if (!item)
+       return;
+    menuclass=new QMenu(tr("Built in Menu"),this->ui->CompareResult);
+    menuclass->addAction("Red");
+    menuclass->addAction("Green");
+    menuclass->addAction("Blue");
+    menuclass->exec(this->ui->CompareResult->viewport()->mapToGlobal(pos));
+//    menuclass=new ContextMenu(this);
+}
+
+void MainWindow::on_CompareResult_itemClicked(QTreeWidgetItem *item, int column)
+{
+    QString file=item->text(2);
+    emit SendAudio(file);
+//    slotConMenu(item.)
+}
+

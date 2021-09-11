@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 6.0.3
+** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,7 +10,7 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -24,6 +24,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTreeWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -35,6 +36,10 @@ public:
     QAction *Aboutaction;
     QAction *Exitaction;
     QAction *Infoaction;
+    QAction *actionEN;
+    QAction *actionRUS;
+    QAction *actionOpen_File_Location;
+    QAction *actionRename_File;
     QWidget *centralwidget;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
@@ -57,15 +62,18 @@ public:
     QLabel *SourceFolder;
     QLabel *Duration;
     QLabel *Files;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *PlayerLayout;
     QMenuBar *TopBar;
     QMenu *Menu;
+    QMenu *menuLanguage;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(896, 651);
+        MainWindow->resize(1014, 771);
         Deleteaction = new QAction(MainWindow);
         Deleteaction->setObjectName(QString::fromUtf8("Deleteaction"));
         Aboutaction = new QAction(MainWindow);
@@ -74,11 +82,19 @@ public:
         Exitaction->setObjectName(QString::fromUtf8("Exitaction"));
         Infoaction = new QAction(MainWindow);
         Infoaction->setObjectName(QString::fromUtf8("Infoaction"));
+        actionEN = new QAction(MainWindow);
+        actionEN->setObjectName(QString::fromUtf8("actionEN"));
+        actionRUS = new QAction(MainWindow);
+        actionRUS->setObjectName(QString::fromUtf8("actionRUS"));
+        actionOpen_File_Location = new QAction(MainWindow);
+        actionOpen_File_Location->setObjectName(QString::fromUtf8("actionOpen_File_Location"));
+        actionRename_File = new QAction(MainWindow);
+        actionRename_File->setObjectName(QString::fromUtf8("actionRename_File"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName(QString::fromUtf8("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(-1, 109, 901, 461));
+        gridLayoutWidget->setGeometry(QRect(-1, 109, 5123, 461));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -91,11 +107,12 @@ public:
         __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
         TreeResult->setHeaderItem(__qtreewidgetitem);
         TreeResult->setObjectName(QString::fromUtf8("TreeResult"));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(100);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(TreeResult->sizePolicy().hasHeightForWidth());
         TreeResult->setSizePolicy(sizePolicy);
+        TreeResult->setMinimumSize(QSize(400, 0));
 
         gridLayout->addWidget(TreeResult, 0, 0, 1, 1);
 
@@ -109,7 +126,7 @@ public:
 
         horizontalLayoutWidget = new QWidget(centralwidget);
         horizontalLayoutWidget->setObjectName(QString::fromUtf8("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(0, 0, 431, 111));
+        horizontalLayoutWidget->setGeometry(QRect(0, 0, 401, 111));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -135,7 +152,7 @@ public:
 
         gridLayoutWidget_2 = new QWidget(centralwidget);
         gridLayoutWidget_2->setObjectName(QString::fromUtf8("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(470, 0, 421, 111));
+        gridLayoutWidget_2->setGeometry(QRect(440, 0, 561, 111));
         gridLayout_2 = new QGridLayout(gridLayoutWidget_2);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -188,12 +205,20 @@ public:
 
         gridLayout_2->addWidget(Files, 5, 2, 1, 1);
 
+        verticalLayoutWidget = new QWidget(centralwidget);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(9, 579, 991, 131));
+        PlayerLayout = new QVBoxLayout(verticalLayoutWidget);
+        PlayerLayout->setObjectName(QString::fromUtf8("PlayerLayout"));
+        PlayerLayout->setContentsMargins(0, 0, 0, 0);
         MainWindow->setCentralWidget(centralwidget);
         TopBar = new QMenuBar(MainWindow);
         TopBar->setObjectName(QString::fromUtf8("TopBar"));
-        TopBar->setGeometry(QRect(0, 0, 896, 26));
+        TopBar->setGeometry(QRect(0, 0, 1014, 26));
         Menu = new QMenu(TopBar);
         Menu->setObjectName(QString::fromUtf8("Menu"));
+        menuLanguage = new QMenu(Menu);
+        menuLanguage->setObjectName(QString::fromUtf8("menuLanguage"));
         MainWindow->setMenuBar(TopBar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -201,9 +226,14 @@ public:
 
         TopBar->addAction(Menu->menuAction());
         Menu->addAction(Deleteaction);
+        Menu->addAction(actionOpen_File_Location);
+        Menu->addAction(actionRename_File);
+        Menu->addAction(menuLanguage->menuAction());
         Menu->addAction(Infoaction);
         Menu->addAction(Aboutaction);
         Menu->addAction(Exitaction);
+        menuLanguage->addAction(actionEN);
+        menuLanguage->addAction(actionRUS);
 
         retranslateUi(MainWindow);
         QObject::connect(Exitaction, SIGNAL(triggered()), MainWindow, SLOT(slotExit()));
@@ -221,6 +251,10 @@ public:
         Aboutaction->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         Exitaction->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
         Infoaction->setText(QCoreApplication::translate("MainWindow", "Program info", nullptr));
+        actionEN->setText(QCoreApplication::translate("MainWindow", "EN", nullptr));
+        actionRUS->setText(QCoreApplication::translate("MainWindow", "RUS", nullptr));
+        actionOpen_File_Location->setText(QCoreApplication::translate("MainWindow", "Open File Location", nullptr));
+        actionRename_File->setText(QCoreApplication::translate("MainWindow", "Rename File", nullptr));
         DirectoryButton->setText(QCoreApplication::translate("MainWindow", "Directory", nullptr));
         SearchButton->setText(QCoreApplication::translate("MainWindow", "Start search", nullptr));
         CompareButton->setText(QCoreApplication::translate("MainWindow", "Compare", nullptr));
@@ -233,6 +267,7 @@ public:
         Duration->setText(QCoreApplication::translate("MainWindow", "00::00::00", nullptr));
         Files->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         Menu->setTitle(QCoreApplication::translate("MainWindow", "Menu", nullptr));
+        menuLanguage->setTitle(QCoreApplication::translate("MainWindow", "Language", nullptr));
     } // retranslateUi
 
 };

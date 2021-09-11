@@ -11,8 +11,10 @@ public:
 
 private:
     MainWindow*mainsource;
-    AudioFile* first;
-    AudioFile* second;
+//    AudioFile* first;
+//    AudioFile* second;
+    QList<AudioFile*>::iterator first;
+    QList<AudioFile*>::iterator second;
     char result;
     void StartCompare();
     void FuzzyCompare(AudioFile* one,AudioFile*two);

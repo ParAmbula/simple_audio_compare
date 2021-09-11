@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui multimediawidgets multimedia
 #QT+=multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -12,6 +12,7 @@ CONFIG += c++11
 SOURCES += \
     audiofile.cpp \
     compareclass.cpp \
+    contextmenu.cpp \
     main.cpp \
     mainwindow.cpp \
     searchclass.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     audiofile.h \
     compareclass.h \
+    contextmenu.h \
     mainwindow.h \
     searchclass.h \
     soundplayer.h

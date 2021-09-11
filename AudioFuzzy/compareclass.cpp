@@ -14,7 +14,9 @@ void CompareClass::StartCompare()
         while(second!=mainsource->ResultList.end())
         {
             result=0;
-            FuzzyCompare(first,second);
+//            AudioFile*fst=&(*first);
+//            AudioFile*scnd=&(*second);
+            FuzzyCompare(*first,*second);
             ++second;
         }
         ++first;
@@ -25,8 +27,9 @@ void CompareClass::StartCompare()
 void CompareClass::FuzzyCompare(AudioFile *one, AudioFile *two)
 {
     //Mamdani 2 input, 1 output, compare table, 4 valuse: 20,50,80,100.
-    QString firstpart=one->AudioData.mid(0,one->AudioData.length()/4);
-    QString secondpart=one->AudioData.mid(one->AudioData.length()/2,one->AudioData.length()/4);
+    QString firstpart=one->AudioData.mid(0,one->AudioData.length()/5);
+    QString secondpart=one->AudioData.mid(one->AudioData.length()/3,one->AudioData.length()/5);
+    QString thirdpart=one->AudioData.mid(one->AudioData.length()/2,one->AudioData.length()/5);
 
     if(one->DataEqual(two)&&one->HashEqual(two)&&one->NameEqual(two)&&one->SizeEqual(two)&&(!one->PathEqual(two)))
     {
@@ -48,13 +51,13 @@ void CompareClass::FuzzyCompare(AudioFile *one, AudioFile *two)
     }
     else if(!one->NameEqual(two)&&!one->SizeEqual(two)&&!one->HashEqual(two))
     {
-        if(two->AudioData.contains(firstpart)&&two->AudioData.contains(secondpart))
+        if(two->AudioData.contains(firstpart)&&two->AudioData.contains(secondpart)&&two->AudioData.contains(thirdpart))
         {
             result=80;
             ResultMap(one,two);
             return;
         }
-        else if(two->AudioData.contains(firstpart)||two->AudioData.contains(secondpart))
+        else if(two->AudioData.contains(firstpart)||two->AudioData.contains(secondpart)||two->AudioData.contains(thirdpart))
         {
             result=50;
             ResultMap(one,two);

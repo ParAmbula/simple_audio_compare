@@ -11,8 +11,9 @@ void SearchClass::StartSearch(MainWindow*source,const QDir& dir)
     foreach(QString file, FilterMask)
     {
         file=dir.absoluteFilePath(file);
-        AudioFile tmp(file);
-        source->ResultList.append(tmp);
+//        AudioFile tmp(file);
+//        source->ResultList.append(tmp);
+        source->ResultList.append(new AudioFile(file));
         source->FileCount++;
     }
     QStringList listDir=dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);

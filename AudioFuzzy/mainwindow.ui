@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>896</width>
-    <height>651</height>
+    <width>1014</width>
+    <height>771</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <rect>
       <x>-1</x>
       <y>109</y>
-      <width>901</width>
+      <width>5123</width>
       <height>461</height>
      </rect>
     </property>
@@ -40,10 +40,16 @@
      <item row="0" column="0">
       <widget class="QTreeWidget" name="TreeResult">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>100</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>400</width>
+         <height>0</height>
+        </size>
        </property>
        <column>
         <property name="text">
@@ -68,7 +74,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>431</width>
+      <width>401</width>
       <height>111</height>
      </rect>
     </property>
@@ -106,9 +112,9 @@
    <widget class="QWidget" name="gridLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>470</x>
+      <x>440</x>
       <y>0</y>
-      <width>421</width>
+      <width>561</width>
       <height>111</height>
      </rect>
     </property>
@@ -195,13 +201,24 @@
      </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>579</y>
+      <width>991</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="PlayerLayout"/>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="TopBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>896</width>
+     <width>1014</width>
      <height>26</height>
     </rect>
    </property>
@@ -209,7 +226,17 @@
     <property name="title">
      <string>Menu</string>
     </property>
+    <widget class="QMenu" name="menuLanguage">
+     <property name="title">
+      <string>Language</string>
+     </property>
+     <addaction name="actionEN"/>
+     <addaction name="actionRUS"/>
+    </widget>
     <addaction name="Deleteaction"/>
+    <addaction name="actionOpen_File_Location"/>
+    <addaction name="actionRename_File"/>
+    <addaction name="menuLanguage"/>
     <addaction name="Infoaction"/>
     <addaction name="Aboutaction"/>
     <addaction name="Exitaction"/>
@@ -235,6 +262,26 @@
   <action name="Infoaction">
    <property name="text">
     <string>Program info</string>
+   </property>
+  </action>
+  <action name="actionEN">
+   <property name="text">
+    <string>EN</string>
+   </property>
+  </action>
+  <action name="actionRUS">
+   <property name="text">
+    <string>RUS</string>
+   </property>
+  </action>
+  <action name="actionOpen_File_Location">
+   <property name="text">
+    <string>Open File Location</string>
+   </property>
+  </action>
+  <action name="actionRename_File">
+   <property name="text">
+    <string>Rename File</string>
    </property>
   </action>
  </widget>

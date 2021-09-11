@@ -7,6 +7,9 @@
 #include<QTimer>
 #include<QTime>
 #include<compareclass.h>
+#include<soundplayer.h>
+#include<contextmenu.h>
+
 
 class SearchClass;
 QT_BEGIN_NAMESPACE
@@ -25,8 +28,9 @@ private:
     QStringList lst;
     int FileCount=0;
     QTreeWidgetItem* ptwi=0;
+    friend class SoundPlayer;
     QStringList AudioMask;
-    QList<AudioFile> ResultList;
+    QList<AudioFile*> ResultList;
     Ui::MainWindow *ui;
     QTimer* worktime;
     QTime functime;
@@ -37,6 +41,10 @@ private:
     QThread tmpthread;
     QDir srcpath;
     void DeleteFiles();
+    SoundPlayer* PlayerBottom;
+    QMenu* menuclass;
+    ContextMenu* menucontext;
+
 
 public slots:
     void slotBrowse();
@@ -48,10 +56,14 @@ public slots:
     void slotAbout();
     void slotInfo();
     void slotExit();
+    void slotConMenu(const QPoint&pos);
 
 signals:
     void StartThread(MainWindow*);
     void StartCompareThread(MainWindow*);
+    void SendAudio(QString);
 
+private slots:
+    void on_CompareResult_itemClicked(QTreeWidgetItem *item, int column);
 };
 #endif // MAINWINDOW_H
