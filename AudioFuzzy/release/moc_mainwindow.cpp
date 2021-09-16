@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[21];
-    char stringdata0[243];
+    QByteArrayData data[26];
+    char stringdata0[308];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,30 +38,37 @@ QT_MOC_LITERAL(2, 23, 0), // ""
 QT_MOC_LITERAL(3, 24, 11), // "MainWindow*"
 QT_MOC_LITERAL(4, 36, 18), // "StartCompareThread"
 QT_MOC_LITERAL(5, 55, 9), // "SendAudio"
-QT_MOC_LITERAL(6, 65, 10), // "slotBrowse"
-QT_MOC_LITERAL(7, 76, 8), // "slotFind"
-QT_MOC_LITERAL(8, 85, 11), // "slotCompare"
-QT_MOC_LITERAL(9, 97, 14), // "slotTimeUpdate"
-QT_MOC_LITERAL(10, 112, 9), // "slotAbort"
-QT_MOC_LITERAL(11, 122, 18), // "slotDeleteselected"
-QT_MOC_LITERAL(12, 141, 9), // "slotAbout"
-QT_MOC_LITERAL(13, 151, 8), // "slotInfo"
-QT_MOC_LITERAL(14, 160, 8), // "slotExit"
-QT_MOC_LITERAL(15, 169, 11), // "slotConMenu"
-QT_MOC_LITERAL(16, 181, 3), // "pos"
-QT_MOC_LITERAL(17, 185, 28), // "on_CompareResult_itemClicked"
-QT_MOC_LITERAL(18, 214, 16), // "QTreeWidgetItem*"
-QT_MOC_LITERAL(19, 231, 4), // "item"
-QT_MOC_LITERAL(20, 236, 6) // "column"
+QT_MOC_LITERAL(6, 65, 10), // "slotLangRu"
+QT_MOC_LITERAL(7, 76, 10), // "slotLangEn"
+QT_MOC_LITERAL(8, 87, 10), // "slotBrowse"
+QT_MOC_LITERAL(9, 98, 8), // "slotFind"
+QT_MOC_LITERAL(10, 107, 11), // "slotCompare"
+QT_MOC_LITERAL(11, 119, 14), // "slotTimeUpdate"
+QT_MOC_LITERAL(12, 134, 9), // "slotAbort"
+QT_MOC_LITERAL(13, 144, 18), // "slotDeleteselected"
+QT_MOC_LITERAL(14, 163, 9), // "slotAbout"
+QT_MOC_LITERAL(15, 173, 8), // "slotInfo"
+QT_MOC_LITERAL(16, 182, 8), // "slotExit"
+QT_MOC_LITERAL(17, 191, 11), // "slotConMenu"
+QT_MOC_LITERAL(18, 203, 3), // "pos"
+QT_MOC_LITERAL(19, 207, 10), // "slotRename"
+QT_MOC_LITERAL(20, 218, 16), // "slotOpenLocation"
+QT_MOC_LITERAL(21, 235, 14), // "slotRenameFile"
+QT_MOC_LITERAL(22, 250, 16), // "QTreeWidgetItem*"
+QT_MOC_LITERAL(23, 267, 4), // "item"
+QT_MOC_LITERAL(24, 272, 6), // "column"
+QT_MOC_LITERAL(25, 279, 28) // "on_CompareResult_itemClicked"
 
     },
     "MainWindow\0StartThread\0\0MainWindow*\0"
-    "StartCompareThread\0SendAudio\0slotBrowse\0"
-    "slotFind\0slotCompare\0slotTimeUpdate\0"
-    "slotAbort\0slotDeleteselected\0slotAbout\0"
-    "slotInfo\0slotExit\0slotConMenu\0pos\0"
-    "on_CompareResult_itemClicked\0"
-    "QTreeWidgetItem*\0item\0column"
+    "StartCompareThread\0SendAudio\0slotLangRu\0"
+    "slotLangEn\0slotBrowse\0slotFind\0"
+    "slotCompare\0slotTimeUpdate\0slotAbort\0"
+    "slotDeleteselected\0slotAbout\0slotInfo\0"
+    "slotExit\0slotConMenu\0pos\0slotRename\0"
+    "slotOpenLocation\0slotRenameFile\0"
+    "QTreeWidgetItem*\0item\0column\0"
+    "on_CompareResult_itemClicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,7 +78,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -79,22 +86,27 @@ static const uint qt_meta_data_MainWindow[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   84,    2, 0x06 /* Public */,
-       4,    1,   87,    2, 0x06 /* Public */,
-       5,    1,   90,    2, 0x06 /* Public */,
+       1,    1,  109,    2, 0x06 /* Public */,
+       4,    1,  112,    2, 0x06 /* Public */,
+       5,    1,  115,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,   93,    2, 0x0a /* Public */,
-       7,    0,   94,    2, 0x0a /* Public */,
-       8,    0,   95,    2, 0x0a /* Public */,
-       9,    0,   96,    2, 0x0a /* Public */,
-      10,    0,   97,    2, 0x0a /* Public */,
-      11,    0,   98,    2, 0x0a /* Public */,
-      12,    0,   99,    2, 0x0a /* Public */,
-      13,    0,  100,    2, 0x0a /* Public */,
-      14,    0,  101,    2, 0x0a /* Public */,
-      15,    1,  102,    2, 0x0a /* Public */,
-      17,    2,  105,    2, 0x08 /* Private */,
+       6,    0,  118,    2, 0x0a /* Public */,
+       7,    0,  119,    2, 0x0a /* Public */,
+       8,    0,  120,    2, 0x0a /* Public */,
+       9,    0,  121,    2, 0x0a /* Public */,
+      10,    0,  122,    2, 0x0a /* Public */,
+      11,    0,  123,    2, 0x0a /* Public */,
+      12,    0,  124,    2, 0x0a /* Public */,
+      13,    0,  125,    2, 0x0a /* Public */,
+      14,    0,  126,    2, 0x0a /* Public */,
+      15,    0,  127,    2, 0x0a /* Public */,
+      16,    0,  128,    2, 0x0a /* Public */,
+      17,    1,  129,    2, 0x0a /* Public */,
+      19,    0,  132,    2, 0x0a /* Public */,
+      20,    0,  133,    2, 0x0a /* Public */,
+      21,    2,  134,    2, 0x0a /* Public */,
+      25,    2,  139,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
@@ -111,8 +123,13 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QPoint,   16,
-    QMetaType::Void, 0x80000000 | 18, QMetaType::Int,   19,   20,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QPoint,   18,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 22, QMetaType::Int,   23,   24,
+    QMetaType::Void, 0x80000000 | 22, QMetaType::Int,   23,   24,
 
        0        // eod
 };
@@ -126,17 +143,22 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->StartThread((*reinterpret_cast< MainWindow*(*)>(_a[1]))); break;
         case 1: _t->StartCompareThread((*reinterpret_cast< MainWindow*(*)>(_a[1]))); break;
         case 2: _t->SendAudio((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 3: _t->slotBrowse(); break;
-        case 4: _t->slotFind(); break;
-        case 5: _t->slotCompare(); break;
-        case 6: _t->slotTimeUpdate(); break;
-        case 7: _t->slotAbort(); break;
-        case 8: _t->slotDeleteselected(); break;
-        case 9: _t->slotAbout(); break;
-        case 10: _t->slotInfo(); break;
-        case 11: _t->slotExit(); break;
-        case 12: _t->slotConMenu((*reinterpret_cast< const QPoint(*)>(_a[1]))); break;
-        case 13: _t->on_CompareResult_itemClicked((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 3: _t->slotLangRu(); break;
+        case 4: _t->slotLangEn(); break;
+        case 5: _t->slotBrowse(); break;
+        case 6: _t->slotFind(); break;
+        case 7: _t->slotCompare(); break;
+        case 8: _t->slotTimeUpdate(); break;
+        case 9: _t->slotAbort(); break;
+        case 10: _t->slotDeleteselected(); break;
+        case 11: _t->slotAbout(); break;
+        case 12: _t->slotInfo(); break;
+        case 13: _t->slotExit(); break;
+        case 14: _t->slotConMenu((*reinterpret_cast< const QPoint(*)>(_a[1]))); break;
+        case 15: _t->slotRename(); break;
+        case 16: _t->slotOpenLocation(); break;
+        case 17: _t->slotRenameFile((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 18: _t->on_CompareResult_itemClicked((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -212,13 +234,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 19;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 19;
     }
     return _id;
 }

@@ -14,8 +14,6 @@ void CompareClass::StartCompare()
         while(second!=mainsource->ResultList.end())
         {
             result=0;
-//            AudioFile*fst=&(*first);
-//            AudioFile*scnd=&(*second);
             FuzzyCompare(*first,*second);
             ++second;
         }

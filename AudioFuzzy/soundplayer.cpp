@@ -2,7 +2,6 @@
 
 SoundPlayer::SoundPlayer(QWidget *parent) : QWidget(parent)
 {
-    //QPushButton* pcmdOpen=new QPushButton("Open"); выбран трек - передаётся сигнал-слот
     QDial* pdialVolume=new QDial;
     pdialVolume->setNotchesVisible(true);
     m_ButtonPlay =new QPushButton;
@@ -21,7 +20,6 @@ SoundPlayer::SoundPlayer(QWidget *parent) : QWidget(parent)
     int nDefaultVolume = 20;
     m_Player->setVolume(nDefaultVolume);
     pdialVolume->setValue(nDefaultVolume);
-    //connect(pcmdOpen, SIGNAL(clicked()),SLOT(slotOpen()));
     connect(m_ButtonPlay,SIGNAL(clicked()),SLOT(slotPlay()));
     connect(m_ButtonStop,SIGNAL(clicked()),m_Player,SLOT(stop()));
     connect(pdialVolume,SIGNAL(valueChanged(int)),m_Player,SLOT(setVolume(int)));
@@ -31,7 +29,6 @@ SoundPlayer::SoundPlayer(QWidget *parent) : QWidget(parent)
     connect(m_Player,SIGNAL(stateChanged(QMediaPlayer::State)),SLOT(slotStatusChanged(QМediaPlayer::State)));
     //Layout setup
     QHBoxLayout* phbxPlayControls = new QHBoxLayout;
-//    phЬxPlayControls->addWidget(pcmdOpen);
     phbxPlayControls->addWidget(m_ButtonPlay);
     phbxPlayControls->addWidget(m_ButtonStop);
     phbxPlayControls->addWidget(pdialVolume);
@@ -101,6 +98,8 @@ void SoundPlayer::slotStatusChanged(QMediaPlayer::State state)
 
 void SoundPlayer::slotGetAudio(QString filepath)
 {
+    if(filepath.isEmpty()||filepath.isNull())
+        QMessageBox::warning(this,tr("Warning"),tr("Can`t play file. Check file path and installed audio codecs!"));
     m_Player->setMedia(QUrl::fromLocalFile(filepath));
     m_ButtonPlay->setEnabled(true);
     m_ButtonStop->setEnabled(true);

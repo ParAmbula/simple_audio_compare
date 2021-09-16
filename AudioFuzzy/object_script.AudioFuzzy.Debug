@@ -1,12 +1,10 @@
 debug/audiofile.o
 debug/compareclass.o
-debug/contextmenu.o
 debug/main.o
 debug/mainwindow.o
 debug/searchclass.o
 debug/soundplayer.o
 debug/moc_compareclass.o
-debug/moc_contextmenu.o
 debug/moc_mainwindow.o
 debug/moc_searchclass.o
 debug/moc_soundplayer.o

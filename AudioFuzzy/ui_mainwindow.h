@@ -225,9 +225,6 @@ public:
         MainWindow->setStatusBar(statusbar);
 
         TopBar->addAction(Menu->menuAction());
-        Menu->addAction(Deleteaction);
-        Menu->addAction(actionOpen_File_Location);
-        Menu->addAction(actionRename_File);
         Menu->addAction(menuLanguage->menuAction());
         Menu->addAction(Infoaction);
         Menu->addAction(Aboutaction);
@@ -240,6 +237,8 @@ public:
         QObject::connect(Aboutaction, SIGNAL(triggered()), MainWindow, SLOT(slotAbout()));
         QObject::connect(Infoaction, SIGNAL(triggered()), MainWindow, SLOT(slotInfo()));
         QObject::connect(Deleteaction, SIGNAL(triggered()), MainWindow, SLOT(slotDeleteselected()));
+        QObject::connect(actionRUS, SIGNAL(triggered()), MainWindow, SLOT(slotLangRU()));
+        QObject::connect(actionEN, SIGNAL(triggered()), MainWindow, SLOT(slotLangEN()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -263,7 +262,7 @@ public:
         DurationLabel->setText(QCoreApplication::translate("MainWindow", "Duration:", nullptr));
         SourceFolderLabel->setText(QCoreApplication::translate("MainWindow", "Source Folder:", nullptr));
         ProgressLabel->setText(QCoreApplication::translate("MainWindow", "Progress:", nullptr));
-        SourceFolder->setText(QCoreApplication::translate("MainWindow", "None", nullptr));
+        SourceFolder->setText(QString());
         Duration->setText(QCoreApplication::translate("MainWindow", "00::00::00", nullptr));
         Files->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         Menu->setTitle(QCoreApplication::translate("MainWindow", "Menu", nullptr));

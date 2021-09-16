@@ -5,7 +5,7 @@
 #include<QMenu>
 #include<QContextMenuEvent>
 
-class ContextMenu :public QTextEdit
+class ContextMenu :public QMenu
 {
     Q_OBJECT
 public:

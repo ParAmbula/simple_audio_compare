@@ -181,7 +181,7 @@
      <item row="4" column="2">
       <widget class="QLabel" name="SourceFolder">
        <property name="text">
-        <string>None</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -233,9 +233,6 @@
      <addaction name="actionEN"/>
      <addaction name="actionRUS"/>
     </widget>
-    <addaction name="Deleteaction"/>
-    <addaction name="actionOpen_File_Location"/>
-    <addaction name="actionRename_File"/>
     <addaction name="menuLanguage"/>
     <addaction name="Infoaction"/>
     <addaction name="Aboutaction"/>
@@ -351,11 +348,45 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionRUS</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slotLangRU()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>506</x>
+     <y>385</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionEN</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slotLangEN()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>506</x>
+     <y>385</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>slotExit()</slot>
   <slot>slotInfo()</slot>
   <slot>slotAbout()</slot>
   <slot>slotDeleteselected()</slot>
+  <slot>slotLangRU()</slot>
+  <slot>slotLangEN()</slot>
  </slots>
 </ui>

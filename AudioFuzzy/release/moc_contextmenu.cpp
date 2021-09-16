@@ -90,7 +90,7 @@ void ContextMenu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
 }
 
 QT_INIT_METAOBJECT const QMetaObject ContextMenu::staticMetaObject = { {
-    QMetaObject::SuperData::link<QTextEdit::staticMetaObject>(),
+    QMetaObject::SuperData::link<QMenu::staticMetaObject>(),
     qt_meta_stringdata_ContextMenu.data,
     qt_meta_data_ContextMenu,
     qt_static_metacall,
@@ -109,12 +109,12 @@ void *ContextMenu::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_ContextMenu.stringdata0))
         return static_cast<void*>(this);
-    return QTextEdit::qt_metacast(_clname);
+    return QMenu::qt_metacast(_clname);
 }
 
 int ContextMenu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QTextEdit::qt_metacall(_c, _id, _a);
+    _id = QMenu::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {

@@ -6,9 +6,9 @@
 #include<QTreeWidgetItemIterator>
 #include<QTimer>
 #include<QTime>
+#include<QAction>
 #include<compareclass.h>
 #include<soundplayer.h>
-#include<contextmenu.h>
 
 
 class SearchClass;
@@ -25,6 +25,8 @@ public:
     ~MainWindow();
     void ConnectAll();
 private:    
+    QTranslator translator;
+    QTranslator apptranslator;
     QStringList lst;
     int FileCount=0;
     QTreeWidgetItem* ptwi=0;
@@ -41,12 +43,16 @@ private:
     QThread tmpthread;
     QDir srcpath;
     void DeleteFiles();
+    void OpenFile(QTreeWidgetItem *);
+    void Rename(QTreeWidgetItem *);
     SoundPlayer* PlayerBottom;
     QMenu* menuclass;
-    ContextMenu* menucontext;
+    QPoint menupos;
 
 
 public slots:
+    void slotLangRu();
+    void slotLangEn();
     void slotBrowse();
     void slotFind();
     void slotCompare();
@@ -57,6 +63,9 @@ public slots:
     void slotInfo();
     void slotExit();
     void slotConMenu(const QPoint&pos);
+    void slotRename();
+    void slotOpenLocation();
+    void slotRenameFile(QTreeWidgetItem *item, int column);
 
 signals:
     void StartThread(MainWindow*);

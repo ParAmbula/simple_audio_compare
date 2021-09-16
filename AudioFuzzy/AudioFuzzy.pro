@@ -12,7 +12,6 @@ CONFIG += c++11
 SOURCES += \
     audiofile.cpp \
     compareclass.cpp \
-    contextmenu.cpp \
     main.cpp \
     mainwindow.cpp \
     searchclass.cpp \
@@ -21,7 +20,6 @@ SOURCES += \
 HEADERS += \
     audiofile.h \
     compareclass.h \
-    contextmenu.h \
     mainwindow.h \
     searchclass.h \
     soundplayer.h
@@ -33,3 +31,4 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+TRANSLATIONS=main_ru.ts main_en.ts

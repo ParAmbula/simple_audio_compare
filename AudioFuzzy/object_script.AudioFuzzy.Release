@@ -1,12 +1,10 @@
 release/audiofile.o
 release/compareclass.o
-release/contextmenu.o
 release/main.o
 release/mainwindow.o
 release/searchclass.o
 release/soundplayer.o
 release/moc_compareclass.o
-release/moc_contextmenu.o
 release/moc_mainwindow.o
 release/moc_searchclass.o
 release/moc_soundplayer.o

@@ -9,24 +9,15 @@ AudioFile::AudioFile(const QString& file)
     if(!tmpfile.open(QFile::ReadOnly|QFile::Unbuffered))
         QMessageBox::information(0,"Error","Can`t open a file");
     AudioName=tmp.fileName();
-    AudioSize=QString::number(tmp.size());
+    AudioSize=QString::number(tmp.size()/1024./1024.);
     QByteArray tmpdata=tmpfile.readAll();
-//    QByteArray::iterator it=tmpdata.begin();
-//    while(it!=tmpdata.end())
-//    {
-//        AudioData+=QString(*it);
-//        ++it;
-//    }
-//    AudioData=QString(tmpfile.readAll());
-//    AudioData=QString(tmpdata);
     int sz=0;
     while(sz!=tmpdata.size())
         AudioData+=tmpdata[sz++];
     AudioData.chop(1024);
     AudioData.remove(0,1024);
     tmpdata.chop(1024);
-    tmpdata.remove(0,1024);    
-//    AudioData=tmpdata;
+    tmpdata.remove(0,1024);
     AudioPath=tmp.absoluteFilePath();
     AudioHash=QString(QCryptographicHash::hash((tmpdata),QCryptographicHash::Md5).toHex());
     tmpfile.flush();
