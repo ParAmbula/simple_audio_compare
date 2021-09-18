@@ -38,8 +38,8 @@ QT_MOC_LITERAL(2, 23, 0), // ""
 QT_MOC_LITERAL(3, 24, 11), // "MainWindow*"
 QT_MOC_LITERAL(4, 36, 18), // "StartCompareThread"
 QT_MOC_LITERAL(5, 55, 9), // "SendAudio"
-QT_MOC_LITERAL(6, 65, 10), // "slotLangRu"
-QT_MOC_LITERAL(7, 76, 10), // "slotLangEn"
+QT_MOC_LITERAL(6, 65, 10), // "slotLangRU"
+QT_MOC_LITERAL(7, 76, 10), // "slotLangEN"
 QT_MOC_LITERAL(8, 87, 10), // "slotBrowse"
 QT_MOC_LITERAL(9, 98, 8), // "slotFind"
 QT_MOC_LITERAL(10, 107, 11), // "slotCompare"
@@ -61,8 +61,8 @@ QT_MOC_LITERAL(25, 279, 28) // "on_CompareResult_itemClicked"
 
     },
     "MainWindow\0StartThread\0\0MainWindow*\0"
-    "StartCompareThread\0SendAudio\0slotLangRu\0"
-    "slotLangEn\0slotBrowse\0slotFind\0"
+    "StartCompareThread\0SendAudio\0slotLangRU\0"
+    "slotLangEN\0slotBrowse\0slotFind\0"
     "slotCompare\0slotTimeUpdate\0slotAbort\0"
     "slotDeleteselected\0slotAbout\0slotInfo\0"
     "slotExit\0slotConMenu\0pos\0slotRename\0"
@@ -143,8 +143,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->StartThread((*reinterpret_cast< MainWindow*(*)>(_a[1]))); break;
         case 1: _t->StartCompareThread((*reinterpret_cast< MainWindow*(*)>(_a[1]))); break;
         case 2: _t->SendAudio((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 3: _t->slotLangRu(); break;
-        case 4: _t->slotLangEn(); break;
+        case 3: _t->slotLangRU(); break;
+        case 4: _t->slotLangEN(); break;
         case 5: _t->slotBrowse(); break;
         case 6: _t->slotFind(); break;
         case 7: _t->slotCompare(); break;

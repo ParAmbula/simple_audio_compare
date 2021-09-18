@@ -70,13 +70,13 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="246"/>
-        <location filename="mainwindow.cpp" line="233"/>
+        <location filename="mainwindow.cpp" line="277"/>
         <source>Delete selected</source>
         <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="251"/>
-        <location filename="mainwindow.cpp" line="212"/>
+        <location filename="mainwindow.cpp" line="254"/>
         <source>About</source>
         <translation></translation>
     </message>
@@ -111,84 +111,96 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="11"/>
-        <location filename="mainwindow.cpp" line="17"/>
+        <location filename="mainwindow.cpp" line="21"/>
+        <location filename="mainwindow.cpp" line="26"/>
+        <location filename="mainwindow.cpp" line="28"/>
         <source>Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="11"/>
+        <location filename="mainwindow.cpp" line="21"/>
+        <location filename="mainwindow.cpp" line="26"/>
         <source>Size</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="17"/>
+        <location filename="mainwindow.cpp" line="28"/>
         <source>Match</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="17"/>
+        <location filename="mainwindow.cpp" line="28"/>
         <source>Path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="61"/>
+        <location filename="mainwindow.cpp" line="75"/>
         <source>DELETED </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="97"/>
+        <location filename="mainwindow.cpp" line="118"/>
+        <source>Settings saved.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="118"/>
+        <source>Restart application.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="135"/>
         <source>Select a Directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="101"/>
+        <location filename="mainwindow.cpp" line="139"/>
         <source>Invalid Directory</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="109"/>
+        <location filename="mainwindow.cpp" line="149"/>
         <source>Counting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="113"/>
+        <location filename="mainwindow.cpp" line="153"/>
         <source>Work in progress.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="126"/>
         <location filename="mainwindow.cpp" line="166"/>
+        <location filename="mainwindow.cpp" line="208"/>
         <source>Job`s done.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="159"/>
+        <location filename="mainwindow.cpp" line="201"/>
         <source>Checking files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="180"/>
+        <location filename="mainwindow.cpp" line="222"/>
         <source>Sample</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="212"/>
+        <location filename="mainwindow.cpp" line="254"/>
         <source>This is a simple program to compare audio files.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="232"/>
+        <location filename="mainwindow.cpp" line="276"/>
         <source>Built in Menu</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="234"/>
+        <location filename="mainwindow.cpp" line="278"/>
         <source>Open file location</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="235"/>
+        <location filename="mainwindow.cpp" line="279"/>
         <source>Rename</source>
         <translation></translation>
     </message>

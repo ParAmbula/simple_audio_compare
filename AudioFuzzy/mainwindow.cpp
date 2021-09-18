@@ -4,15 +4,17 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::MainWindow), m_settings("HSE SpbSTU","AudioFuzzy")
 {
-    QString filespec=QString("qt_ru");
+    QString filespec=m_settings.value("/Settings/qtLanSpec","qt_en").toString();
     QString directory=QLibraryInfo::location(QLibraryInfo::TranslationsPath);
     apptranslator.load(filespec,directory);
+//    apptranslator.load(settings.value("/Settings/qtLanSpec","qt_en").toString(),QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     QApplication::installTranslator(&apptranslator);
-    translator.load("main_ru.qm",".");
+    QString lang=m_settings.value("/Settings/Tran","main_en.qm").toString();
+    translator.load(lang,".");
+//    translator.load(settings.value("/Setting/Tran","main_en.qm").toString(),".");
     QApplication::installTranslator(&translator);
-
 
     ui->setupUi(this);
     menuclass=nullptr;
@@ -36,7 +38,9 @@ MainWindow::MainWindow(QWidget *parent)
     AudioMask<<"*.aac"<<"*.flac"<<"*.m4a"<<"*.mp3"<<"*.ogg"<<"*.wav"<<"*.wma"<<"*.mp4";
     PlayerBottom=new SoundPlayer(this);
     this->ui->PlayerLayout->addWidget(PlayerBottom);
-//    this->ui->SearchButton->setDisabled(true);
+    this->ui->SearchButton->setDisabled(true);
+    this->ui->CompareButton->setDisabled(true);
+    this->ui->StopButton->setDisabled(true);
 }
 
 MainWindow::~MainWindow()
@@ -89,34 +93,30 @@ void MainWindow::Rename(QTreeWidgetItem *item)
     item->setFlags(item->flags() ^ Qt::ItemIsEditable);
 }
 
-void MainWindow::slotLangRu()
+void MainWindow::slotLangRU()
 {
-    QCoreApplication::removeTranslator(&translator);
-    QCoreApplication::removeTranslator(&apptranslator);
-    QString filespec=QString("qt_ru");
-    QString directory=QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-    apptranslator.load(filespec,directory);
+    m_settings.setValue("/Settings/qtLanSpec","qt_ru");
+    m_settings.setValue("/Setting/Tran","main_ru.qm");
+    QMessageBox::about(this,"Settings saved.","Restart application.");
+
+//    settings.setValue("/Settings/qtLanDir",QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+//    QCoreApplication::removeTranslator(&translator);
+//    QCoreApplication::removeTranslator(&apptranslator);
+//    QString filespec=QString("qt_ru");
+//    QString directory=QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+//    apptranslator.load(filespec,directory);
 //    QApplication::installTranslator(&apptranslator);
-    translator.load("main_ru.qm",".");
+//    translator.load("main_ru.qm",".");
 //    QApplication::installTranslator(&translator);
-    QCoreApplication::installTranslator(&translator);
-    QCoreApplication::installTranslator(&apptranslator);
-//    this->retranslate();
+//    QCoreApplication::installTranslator(&translator);
+//    QCoreApplication::installTranslator(&apptranslator);
 }
 
-void MainWindow::slotLangEn()
+void MainWindow::slotLangEN()
 {
-    QCoreApplication::removeTranslator(&translator);
-    QCoreApplication::removeTranslator(&apptranslator);
-    QString filespec=QString("qt_en");
-    QString directory=QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-    apptranslator.load(filespec,directory);
-//    QApplication::installTranslator(&apptranslator);
-    translator.load("main_en.qm",".");
-//    QApplication::installTranslator(&translator);
-    QCoreApplication::installTranslator(&translator);
-    QCoreApplication::installTranslator(&apptranslator);
-//    this->retranslate();
+    m_settings.setValue("/Settings/qtLanSpec","qt_en");
+    m_settings.setValue("/Setting/Tran","main_en.qm");
+    QMessageBox::about(this,tr("Settings saved."),tr("Restart application."));
 }
 
 void MainWindow::slotBrowse()
@@ -126,12 +126,14 @@ void MainWindow::slotBrowse()
         this->ui->SourceFolder->setText(SourceDir);
     else
         this->ui->SourceFolder->setText(tr("Invalid Directory"));
+    this->ui->SearchButton->setDisabled(false);
 }
 
 void MainWindow::slotFind()
 {
     if(worktime->isActive())
         return;
+    this->ui->StopButton->setDisabled(false);
     FileCount=0;
     this->ui->Files->setText(QString(tr("Counting")));
     ResultList.clear();
@@ -160,6 +162,8 @@ void MainWindow::slotFind()
         ptwi->setText(0,lswd->AudioName);
         ptwi->setText(1,lswd->AudioSize+" MB");
     }
+    this->ui->CompareButton->setDisabled(false);
+
 }
 
 void MainWindow::slotTimeUpdate()

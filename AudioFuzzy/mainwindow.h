@@ -7,6 +7,8 @@
 #include<QTimer>
 #include<QTime>
 #include<QAction>
+#include<QSettings>
+#include<QVariant>
 #include<compareclass.h>
 #include<soundplayer.h>
 
@@ -48,11 +50,12 @@ private:
     SoundPlayer* PlayerBottom;
     QMenu* menuclass;
     QPoint menupos;
+    QSettings m_settings;
 
 
 public slots:
-    void slotLangRu();
-    void slotLangEn();
+    void slotLangRU();
+    void slotLangEN();
     void slotBrowse();
     void slotFind();
     void slotCompare();
