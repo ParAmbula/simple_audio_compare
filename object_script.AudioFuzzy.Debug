@@ -1,0 +1,11 @@
+debug/audiofile.o
+debug/compareclass.o
+debug/main.o
+debug/mainwindow.o
+debug/searchclass.o
+debug/soundplayer.o
+debug/qrc_Translations.o
+debug/moc_compareclass.o
+debug/moc_mainwindow.o
+debug/moc_searchclass.o
+debug/moc_soundplayer.o
