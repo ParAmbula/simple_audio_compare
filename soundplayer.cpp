@@ -34,9 +34,7 @@ SoundPlayer::SoundPlayer(QWidget *parent) : QWidget(parent)
     connect(m_Position,SIGNAL(sliderMoved(int)),SLOT(slotSetMediaPosition(int)));
     connect(m_Player,SIGNAL(positionChanged(qint64)),SLOT(slotSetSliderPosition(qint64)));
     connect(m_Player,SIGNAL(durationChanged(qint64)),SLOT(slotSetDuration(qint64)));
-//    connect(m_Player,SIGNAL(stateChanged(QMediaPlayer::State)),SLOT(slotStatusChanged(QМediaPlayer::State)));
     connect(m_Player,&QMediaPlayer::stateChanged,this,&SoundPlayer::slotStatusChanged);
-    //Layout setup
     QHBoxLayout* phbxPlayControls = new QHBoxLayout;
     phbxPlayControls->addWidget(m_ButtonPlay);
     phbxPlayControls->addWidget(m_ButtonStop);

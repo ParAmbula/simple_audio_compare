@@ -11,9 +11,9 @@ MainWindow::MainWindow(QWidget *parent)
     {
         translator.load(":/Langs/main_ru.qm",".");
         apptranslator.load("qt_ru",QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+        QApplication::installTranslator(&apptranslator);
+        QApplication::installTranslator(&translator);
     }
-    QApplication::installTranslator(&apptranslator);
-    QApplication::installTranslator(&translator);
     ui->setupUi(this);
     menuclass=nullptr;
     this->setWindowTitle("AudioFuzzy");
@@ -30,6 +30,10 @@ MainWindow::MainWindow(QWidget *parent)
     this->ui->CompareResult->setColumnWidth(0,200);
     this->ui->CompareResult->setColumnWidth(1,80);
     this->ui->ProgressBar->hide();
+    menuclass=new QMenu(tr("Built in Menu"),this->ui->CompareResult);
+    menuclass->addAction(tr("Delete selected"),this,SLOT(slotDeleteselected()));
+    menuclass->addAction(tr("Open file location"),this,SLOT(slotOpenLocation()));
+    menuclass->addAction(tr("Rename"),this,SLOT(slotRename()));
     tmpsearch=nullptr;
     tmpcompare=nullptr;
     oldname.clear();
@@ -56,9 +60,9 @@ void MainWindow::ConnectAll()
     connect(this->ui->StopButton,SIGNAL(clicked()),SLOT(slotAbort()));
     connect(this->worktime,SIGNAL(timeout()),this,SLOT(slotTimeUpdate()));
     connect(this,SIGNAL(SendAudio(QString)),PlayerBottom,SLOT(slotGetAudio(QString)));
-    connect(this->ui->CompareResult,SIGNAL(itemClicked(QTreeWidgetItem *, int )),this,SLOT(on_CompareResult_itemClicked(QTreeWidgetItem *, int )));
+    connect(this->ui->CompareResult,SIGNAL(itemClicked(QTreeWidgetItem *, int)),this,SLOT(on_CompareResult_itemClicked(QTreeWidgetItem * )));
     connect(this->ui->CompareResult,SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(slotConMenu(const QPoint &)));
-    connect(this,SIGNAL(Rename(QTreeWidgetItem *,int)),this,SLOT(slotRenameFile(QTreeWidgetItem *, int )));
+    connect(this,SIGNAL(Rename(QTreeWidgetItem *)),this,SLOT(slotRenameFile(QTreeWidgetItem * )));
 }
 
 void MainWindow::DeleteFiles()
@@ -191,7 +195,8 @@ void MainWindow::slotCompare()
             ptwi->setText(0,audfile->AudioName);
             ptwi->setText(1,QString(tr("Sample")));
             ptwi->setText(2,audfile->AudioPath);
-            for(auto&files:audfile->CompareResult.keys())
+            const auto kluchi=audfile->CompareResult.keys();
+            for(const auto&files: kluchi)
             {
                 if(!files->TreeAdded)
                 {
@@ -241,20 +246,13 @@ void MainWindow::slotConMenu(const QPoint&pos)
     if (!item)
        return;
     menupos=pos;
-    if(menuclass==nullptr)
-    {
-    menuclass=new QMenu(tr("Built in Menu"),this->ui->CompareResult);
-    menuclass->addAction(tr("Delete selected"),this,SLOT(slotDeleteselected()));
-    menuclass->addAction(tr("Open file location"),this,SLOT(slotOpenLocation()));
-    menuclass->addAction(tr("Rename"),this,SLOT(slotRename()));
-    }
     menuclass->exec(this->ui->CompareResult->viewport()->mapToGlobal(pos));
 }
 
 void MainWindow::slotRename()
 {
     QTreeWidgetItem *item = this->ui->CompareResult->itemAt(menupos);
-    emit Rename(item,0);
+    emit Rename(item);
 }
 
 void MainWindow::slotOpenLocation()
@@ -263,7 +261,7 @@ void MainWindow::slotOpenLocation()
     OpenFile(item);
 }
 
-void MainWindow::slotRenameFile(QTreeWidgetItem *item, int column)
+void MainWindow::slotRenameFile(QTreeWidgetItem *item)
 {
     bool accept;
     oldname=item->text(0);
@@ -303,7 +301,7 @@ void MainWindow::slotRenameFile(QTreeWidgetItem *item, int column)
         return;
 }
 
-void MainWindow::on_CompareResult_itemClicked(QTreeWidgetItem *item, int column)
+void MainWindow::on_CompareResult_itemClicked(QTreeWidgetItem *item)
 {
     QString file=item->text(2);
     emit SendAudio(file);

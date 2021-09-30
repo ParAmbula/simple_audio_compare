@@ -11,8 +11,6 @@ public:
 
 private:
     MainWindow*mainsource;
-//    AudioFile* first;
-//    AudioFile* second;
     QList<AudioFile*>::iterator first;
     QList<AudioFile*>::iterator second;
     char result;

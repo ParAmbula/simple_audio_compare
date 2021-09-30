@@ -2,7 +2,6 @@
 
 CompareClass::CompareClass(QObject *parent) : QObject(parent)
 {
-
 }
 
 void CompareClass::StartCompare()

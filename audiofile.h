@@ -1,9 +1,7 @@
-// оформление "реферат" с пояснениями и алгоритмами
-
 #ifndef AUDIOFILE_H
 #define AUDIOFILE_H
 #include<QObject>
-#include<QMultiMap>
+#include<QMap>
 
 
 class MainWindow;
@@ -26,7 +24,7 @@ private:
     QString AudioHash;
     QString AudioPath;
     QString AudioData;
-    QMultiMap<AudioFile*,char> CompareResult;
+    QMap<AudioFile*,char> CompareResult;
     bool TreeAdded;
     friend class MainWindow;
     friend class TreeResult;

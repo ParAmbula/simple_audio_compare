@@ -2,7 +2,6 @@
 
 SearchClass::SearchClass(QObject *parent) : QObject(parent)
 {
-
 }
 
 void SearchClass::StartSearch(MainWindow*source,const QDir& dir)

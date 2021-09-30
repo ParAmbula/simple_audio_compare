@@ -24,7 +24,6 @@ private:
 
 
 private slots:
-//    void slotOpen();
     void slotPlay();
     void slotSetSliderPosition(qint64);
     void slotSetMediaPosition(int);

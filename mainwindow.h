@@ -25,21 +25,20 @@ private:
     QStringList lst;
     int FileCount=0;
     QTreeWidgetItem* ptwi=0;
-    friend class SoundPlayer;
     QStringList AudioMask;
     QList<AudioFile*> ResultList;
     Ui::MainWindow *ui;
     QTimer* worktime;
     QTime functime;
-    friend class SearchClass;
     SearchClass* tmpsearch;
+    friend class SearchClass;
+    friend class SoundPlayer;
     friend class CompareClass;
     CompareClass* tmpcompare;
     QThread tmpthread;
     QDir srcpath;
     void DeleteFiles();
     void OpenFile(QTreeWidgetItem *);
-//    void Rename(QTreeWidgetItem *);
     SoundPlayer* PlayerBottom;
     QMenu* menuclass;
     QPoint menupos;
@@ -61,15 +60,15 @@ public slots:
     void slotConMenu(const QPoint&pos);
     void slotRename();
     void slotOpenLocation();
-    void slotRenameFile(QTreeWidgetItem *item, int column);
+    void slotRenameFile(QTreeWidgetItem *item);
 
 signals:
-    void Rename(QTreeWidgetItem *,int);
+    void Rename(QTreeWidgetItem *);
     void StartThread(MainWindow*);
     void StartCompareThread(MainWindow*);
     void SendAudio(QString);
 
 private slots:
-    void on_CompareResult_itemClicked(QTreeWidgetItem *item, int column);
+    void on_CompareResult_itemClicked(QTreeWidgetItem *item);
 };
 #endif // MAINWINDOW_H
